@@ -1,0 +1,87 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.72'
+
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    //Project
+    targetSdkVersion = 29
+    minSdkVersion = 28
+    compileSdkVersion = targetSdkVersion
+    libVersionCode = 1
+    libVersionName = '1.0.2'
+
+
+    // Support
+    app_compat_version = '1.1.0'
+    androidx_core_version = '1.3.0-rc01'
+    support_v4_version = '1.0.0'
+    support_media_version = '1.0.0'
+    support_media_version = '1.0.0'
+    constraint_layout_version = '2.0.0-beta4'
+    material_version = '1.2.0-alpha05'
+    recyclerview_version = '1.1.0'
+    cardview_version = '1.0.0'
+
+    // Arch Components
+    lifecycle_version = '2.2.0'
+    room_version = '2.2.5'
+    nav_version = '2.2.1'
+    work_version = '2.3.4'
+    annotations_version = '1.1.0'
+
+    // RxJava
+    rxjava_version = '2.2.5'
+
+    // RxAndroid
+    rxandroid_version = '2.1.0'
+
+    // Dagger
+    dagger_version = '2.27'
+
+    // Firebase
+    firebase_firestore_version = '21.4.2'
+    firebase_core_version = '17.3.0'
+    firebase_functions_version = '19.0.2'
+    firebase_ui_auth_version = '4.3.1'
+    firebase_auth_version = '19.3.0'
+
+    // Test
+    junit_version = '4.13'
+    runner_version = '1.3.0-alpha05'
+    espress_core_version = '3.3.0-alpha05'
+
+    //Coroutines
+    coroutines_version = '1.3.5-2-native-mt-1.4-M1'
+
+    //Util
+    timber_version = '4.7.1'
+    gson_version = '2.8.6'
+    joda_version = '2.9.9.4'
+}
