@@ -30,31 +30,7 @@ open class DefaultPromiseManager : PromiseManager{
     @CallSuper
     @Synchronized
     override suspend fun <T> controlAsyncAwait(promise: Promise<T>): T {
-        val titty = promise.await()
-        debug.invoke("DefaultPromiseManager : controlAsyncAwait : titty = $titty")
-        debug.invoke("DefaultPromiseManager : controlAsyncAwait : then promise.providerName = ${promise.providerName}")
-        if(promise.providerName != "DefaultDispatcherProvider"){
-            controlCancelAllPromises()
-        }
-        return titty
-        /*val prom2: Promise<T> = promise.then {titty ->
-            debug.invoke("DefaultPromiseManager : controlAsyncAwait : titty = $titty")
-            debug.invoke("DefaultPromiseManager : controlAsyncAwait : then promise.providerName = ${promise.providerName}")
-            if(promise.providerName != "DefaultDispatcherProvider"){
-                controlCancelAllPromises()
-            }
-            titty
-        }*/
-
-        /*return controlAsync(promise.then {titty: T ->
-            debug.invoke("DefaultPromiseManager : controlAsyncAwait : titty = $titty")
-            debug.invoke("DefaultPromiseManager : controlAsyncAwait : then promise.providerName = ${promise.providerName}")
-            if(promise.providerName != "DefaultDispatcherProvider"){
-                controlCancelAllPromises()
-                titty
-            }
-           titty
-        }).await()*/
+        return controlAsync(promise).await()
     }
 
     @CallSuper
